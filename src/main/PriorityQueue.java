@@ -1,5 +1,5 @@
 package main;
 
-public class PriorityQueue {
-//asda
+public class PriorityQueue<T> {
+	
 }
