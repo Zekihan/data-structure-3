@@ -1,5 +1,5 @@
 package main;
 
-public class PriorityQueue {
-//asd
+public class PriorityQueue<T> {
+	
 }
