@@ -92,5 +92,85 @@ public class DLList<T> {
 		}
 		size++;
 	}
-
+	public void add(T newEntry,int newPosition) {
+		if(newPosition == 1) {
+			DLNode newNode = new DLNode(newEntry, firstNode);
+			newNode.setNextNode(firstNode);
+			firstNode.setPrevNode(newNode);
+			firstNode = newNode;
+		}
+		else if (newPosition == size) {
+			add(newEntry);
+		}
+		else {
+			
+			DLNode afterNode = getNodeAt(newPosition);
+			DLNode previousNode = afterNode.getPrevNode();
+			DLNode newNode = new DLNode(previousNode, newEntry, afterNode);
+			previousNode.setNextNode(newNode);
+			afterNode.setPrevNode(newNode);
+			
+		}
+		
+	}
+	public T[] toArray() {
+		@SuppressWarnings("unchecked")
+		T[] result = (T[])new Object[size];
+		int i = 0 ;
+		DLNode currentNode = firstNode;
+		while ((i<size)&&(currentNode != null)) {
+			result[i] = currentNode.getData();
+			currentNode = currentNode.getNextNode();
+			i++;
+		}
+		return result;
+	}
+	public T remove(int givenPosition) {
+		T result = null;
+		if (givenPosition == 1) {
+			result = firstNode.getData();
+			firstNode = firstNode.getNextNode();
+			firstNode.setPrevNode(null);
+	        size--;
+       
+		}
+		else if (givenPosition == size) {
+			result = lastNode.getData();
+			lastNode = lastNode.getPrevNode();
+			lastNode.setNextNode(null);
+	        size--;
+		}
+		else {
+			DLNode nodeToRemove = getNodeAt(givenPosition);
+			DLNode previousNode = nodeToRemove.getPrevNode();
+			DLNode afterNode = nodeToRemove.getPrevNode();
+			previousNode.setNextNode(afterNode);
+			afterNode.setPrevNode(previousNode);
+		}
+		return result;
+	}
+	public T replace(int givenPosition, T newEntry) {
+		DLNode nodeToReplace = getNodeAt(givenPosition);
+		T originalEntry = nodeToReplace.getData();
+		nodeToReplace.setData(newEntry);
+		return originalEntry;
+	}
+	public T getEntry(int givenPosition) {
+		return getNodeAt(givenPosition).getData();
+	}
+	public boolean contains (T anEntry) {
+		boolean found = false;
+		DLNode currentNode = firstNode;
+		while ((!found)&&(currentNode != null)) {
+			if (anEntry.equals(currentNode.getData())) {
+				found = true;
+			}
+			else {
+				currentNode = currentNode.getNextNode();
+			}
+		}
+		return found;
+	}
+	
+	
 }
