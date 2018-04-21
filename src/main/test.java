@@ -3,6 +3,7 @@ package main;
 public class test {
 
 	public static void main(String[] args) {
+		
         DLList<String> list = new DLList<String>();
         list.add("H");
         list.add("E");
@@ -11,7 +12,7 @@ public class test {
         list.add("O");
         System.out.println(list);
         System.out.println("Deleting l");
-        list.remove(1);
+        list.remove(3);
         System.out.println(list);
         System.out.println("Deleting H");
         list.remove(1);

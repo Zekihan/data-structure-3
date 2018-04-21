@@ -62,7 +62,7 @@ public class DLList<T> implements DLListInterface<T>{
 	    DLNode newNode;
 	    if (givenPosition < size / 2) {
 	    	newNode = firstNode;
-	      for (int i = 0; i < givenPosition + 1; i++) {
+	      for (int i = 0; i < givenPosition; i++) {
 	    	  newNode = newNode.next;
 	      }
 	    } else {
@@ -76,7 +76,7 @@ public class DLList<T> implements DLListInterface<T>{
 	}
 	public boolean isEmpty() {
 		boolean result = false;
-		if ((size == 0)&&(firstNode == null)&&(lastNode == null))
+		if (size == 0)
 			result = true;
 		return result;
 	}
@@ -95,9 +95,9 @@ public class DLList<T> implements DLListInterface<T>{
 	public void add(T newEntry,int newPosition) {
 		if(newPosition == 1) {
 			DLNode newNode = new DLNode(newEntry, firstNode);
-			newNode.setNextNode(firstNode);
-			firstNode.setPrevNode(newNode);
-			firstNode = newNode;
+			newNode.next = firstNode;
+            newNode.prev = null;
+            firstNode = newNode;
 		}
 		else if (newPosition == size) {
 			add(newEntry);
@@ -130,25 +130,24 @@ public class DLList<T> implements DLListInterface<T>{
 		if (givenPosition == 1) {
 			result = firstNode.getData();
 			firstNode = firstNode.getNextNode();
-			firstNode.setPrevNode(null);
-	        size--;
+			
        
 		}
 		else if (givenPosition == size) {
 			result = lastNode.getData();
 			lastNode = lastNode.getPrevNode();
 			lastNode.setNextNode(null);
-	        size--;
+	        
 		}
 		else {
 			DLNode nodeToRemove = getNodeAt(givenPosition);
-			DLNode previousNode = nodeToRemove.getPrevNode();
-			DLNode afterNode = nodeToRemove.getPrevNode();
-			previousNode.setNextNode(afterNode);
-			afterNode.setPrevNode(previousNode);
+			nodeToRemove.prev.next = nodeToRemove.next;
+			nodeToRemove.next.prev = nodeToRemove.prev;
 		}
+		size--;
 		return result;
 	}
+	
 	public T replace(int givenPosition, T newEntry) {
 		DLNode nodeToReplace = getNodeAt(givenPosition);
 		T originalEntry = nodeToReplace.getData();
