@@ -18,18 +18,14 @@ public class ListSorter {
 	}
     
 	public static ListInterface<Item> sorted(ListInterface<Item> list){
-		ListInterface<Item> sorted =  new DLList<Item>();
-		sorted = list;
-		sort(sorted);
-		return sorted;
+        ListInterface<Item> sorted =  new DLList<Item>();
+        int i;
+        for (i=0;i<=list.size();i++) {
+            sorted.add(list.getEntry(i));
+        }
+        sort(sorted);
+        return sorted;
 		
 	}
 
-	
-	
-	
-	
-	
-	
-	
 }
