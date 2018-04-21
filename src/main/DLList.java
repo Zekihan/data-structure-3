@@ -181,5 +181,8 @@ public class DLList<T> implements ListInterface<T>{
         
         return str;
 }
+	public int size() {
+		return size;
+	}
 	
 }
