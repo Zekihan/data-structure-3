@@ -7,12 +7,17 @@ public class test {
         list.add("H");
         list.add("E");
         list.add("L");
-        list.add("L");
+        list.add("M");
         list.add("O");
-        System.out.println(list);
+        System.out.println(list.toString());
+        list.replace(4, "L");
+        System.out.println(list.toString());
+        System.out.println(list.contains("M"));
+        System.out.println(list.contains("H"));
         System.out.println("Deleting l");
-        list.remove(1);
+        list.remove(3);
         System.out.println(list);
+        
         System.out.println("Deleting H");
         list.remove(1);
         System.out.println(list);
@@ -25,6 +30,7 @@ public class test {
         System.out.println("Deleting l");
         list.remove(1);
         System.out.println(list);
+        System.out.println(list.isEmpty());
         list.add("O",1);
         list.add("L",1);
         list.add("L",1);
@@ -50,6 +56,7 @@ public class test {
         }
         
         
-}
+        
 	}
+}
 
