@@ -1,6 +1,6 @@
 package main;
 
-public class DLList<T> {
+public class DLList<T> implements DLListInterface<T>{
 	
 	private DLNode firstNode;
 	private DLNode lastNode;
@@ -87,8 +87,8 @@ public class DLList<T> {
 			lastNode = newNode;
 		}
 		else {
-			DLNode lastNode = getNodeAt(size);
 			lastNode.setNextNode(newNode);
+			lastNode = newNode;
 		}
 		size++;
 	}
@@ -171,6 +171,16 @@ public class DLList<T> {
 		}
 		return found;
 	}
-	
+	public String toString(){
+        DLNode cn = firstNode;
+        String str = "";
+        while(cn != null){
+                str += cn.getData();
+                //System.out.print(cn.getC());
+                cn = cn.getNextNode();
+        }
+        
+        return str;
+}
 	
 }
