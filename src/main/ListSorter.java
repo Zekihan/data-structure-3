@@ -18,6 +18,7 @@ public class ListSorter {
 	}
     
 	public static ListInterface<Item> sorted(ListInterface<Item> list){
+<<<<<<< HEAD
 		ListInterface<Item> sorted =  new DLList<Item>();
 		int i;
 		for (i=0;i<=list.size();i++) {
@@ -25,14 +26,16 @@ public class ListSorter {
 		}
 		sort(sorted);
 		return sorted;
+=======
+        ListInterface<Item> sorted =  new DLList<Item>();
+        int i;
+        for (i=0;i<=list.size();i++) {
+            sorted.add(list.getEntry(i));
+        }
+        sort(sorted);
+        return sorted;
+>>>>>>> 673cab7fca909fb8bc878b36d3725c052493f9df
 		
 	}
 
-	
-	
-	
-	
-	
-	
-	
 }
