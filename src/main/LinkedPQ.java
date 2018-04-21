@@ -1,41 +1,42 @@
 package main;
 
-public class LinkedPQ<T extends Comparable<? super T>> implements PriorityQueueInterface<T> {
+public class LinkedPQ<T> implements PriorityQueueInterface<T> {
 
 	private Node<T> headNode;
     private int size;
     
-	public void add(T newEntry) {
+	public void add(T newEntry, int priority) {
 		
 		Node<T> node = headNode;
-		headNode = insert(node, newEntry);
+		headNode = insert(node, newEntry, priority);
 	}
 	
-	private Node<T> insert(Node<T> node, T data) {
+	private Node<T> insert(Node<T> node, T data, int priority) {
 		
-		Node<T> newNode =  createNewNode(data);
+		Node<T> newNode =  createNewNode(data,priority);
 		
 		if(node == null) 
 		{
 			return newNode;
 		}
-		if(node.data.compareTo(data) > 0) 
+		if(node.priority < priority) 
 		{
 			newNode.next = node;
 			node = newNode;
 	    } 
 		else 
 	    {
-			node.next = insert(node.next, data);
+			node.next = insert(node.next, data, priority);
+			size--;
 	    }
 		
 	    return node;
 	    
 	}
 	
-	private Node<T> createNewNode(T data) {
+	private Node<T> createNewNode(T data, int priority) {
 		size++;
-		return new Node<T>(data);
+		return new Node<T>(data, priority);
 		}
 		
 
@@ -86,10 +87,12 @@ public class LinkedPQ<T extends Comparable<? super T>> implements PriorityQueueI
 	{
 		private Node<T> next;
 		private final T data;
+		private final int priority;
 		
-		public Node(T data)
+		public Node(T data, int priority)
 		{
 		this.data = data;
+		this.priority = priority;
 		}
 	}
 

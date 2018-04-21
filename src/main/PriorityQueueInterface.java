@@ -1,11 +1,11 @@
 package main;
 
-public interface PriorityQueueInterface<T extends Comparable<? super T>>
+public interface PriorityQueueInterface<T>
 {
 	/** Adds a new entry to this priority queue.
 		@param newEntry  An object to be added. */
-	public void add(T newEntry);
-	
+	public void add(T newEntry,int priority);
+
 	/** Removes and returns the entry having the highest priority.
 	    @return  Either the object having the highest priority or,
 	             if the priority queue is empty before the operation, null. */

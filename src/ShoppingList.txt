@@ -1,0 +1,3 @@
+Elma,1
+Karpuz,3
+Muz,2
