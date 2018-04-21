@@ -3,6 +3,7 @@ package main;
 public class test {
 
 	public static void main(String[] args) {
+<<<<<<< HEAD
         DLList<String> list = new DLList<String>();
         list.add("H");
         list.add("E");
@@ -58,5 +59,31 @@ public class test {
         
         
 	}
+=======
+	
+		
+		
+		Item Item1 = new Item("Elma", 1);
+		Item Item2 = new Item("Muz", 2);
+		Item Item3 = new Item("Fish", 8);
+		
+		ListInterface<Item> shoppingList = new DLList<Item>();
+		shoppingList.add(Item3);
+		shoppingList.add(Item1);
+		shoppingList.add(Item2);
+		
+		
+		System.out.println(shoppingList.getEntry(0).getName());
+		
+		
+		System.out.println((ListSorter.sorted(shoppingList)).getEntry(0).getName());
+		
+		
+		System.out.println(shoppingList.getEntry(0).getName());
+
+	}
+
+
+>>>>>>> 4eb0b9a30bf8b370fc5aea4e0d865e0d1cb0cac6
 }
 
