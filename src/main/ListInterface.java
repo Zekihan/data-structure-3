@@ -1,6 +1,6 @@
 package main;
 
-public interface DLListInterface<T> {
+public interface ListInterface<T> {
 	
 	public void clear();
 	

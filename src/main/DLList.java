@@ -1,6 +1,6 @@
 package main;
 
-public class DLList<T> implements DLListInterface<T>{
+public class DLList<T> implements ListInterface<T>{
 	
 	private DLNode firstNode;
 	private DLNode lastNode;
