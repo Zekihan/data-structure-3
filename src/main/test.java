@@ -11,14 +11,28 @@ import java.util.stream.Stream;
 public class Test {
 
 	public static void main(String[] args) {
-        DLList<String> list = new DLList<String>();
-        
-		Item Item1 = new Item("Elma", 1);
-		Item Item2 = new Item("Muz", 2);
-		Item Item3 = new Item("Fish", 8);
+		
+		ListInterface<Item> itemListTest = new DLList<Item>();
+		
+		Item item1 = new Item("bok1",2);
+		Item item2 = new Item("bok2",1);
+		Item item3 = new Item("bok3",3);
+		Item item4 = new Item("bok4",5);
+		
+		itemListTest.add(item1);
+		itemListTest.add(item2);
+		itemListTest.add(item3);
+		itemListTest.add(item4);
 		
 		
+		System.out.println(itemListTest.getEntry(0).getName());
+		System.out.println(itemListTest.getEntry(1).getName());
+		System.out.println(itemListTest.getEntry(2).getName());
+		System.out.println(itemListTest.getEntry(3).getName());
+		System.out.println(itemListTest.getEntry(4).getName());
 
+		
+		
 		String ItemFile = readLineByLine("src/ShoppingList.txt");
 		String[] itemFileLines = ItemFile.split("\n");
 		
@@ -30,7 +44,18 @@ public class Test {
 			itemList.add(new Item(itemString[0],Double.parseDouble(itemString[1]))); 
 		}
 		
+		System.out.println(itemList.getEntry(0).getName());
+		System.out.println(itemList.getEntry(1).getName());
+		System.out.println(itemList.getEntry(2).getName());
+		System.out.println(itemList.getEntry(3).getName());
+		System.out.println(itemList.getEntry(4).getName());
+		System.out.println(itemList.getEntry(5).getName());
+		System.out.println(itemList.getEntry(6).getName());
+		System.out.println(" ");
+		
 		ListSorter.sort(itemList);
+		
+		
 		System.out.println(itemList.getEntry(0).getName());
 		System.out.println(itemList.getEntry(1).getName());
 		System.out.println(itemList.getEntry(2).getName());
@@ -42,7 +67,7 @@ public class Test {
 		
 		PriorityQueueInterface<Item> priorityList = new LinkedPQ<Item>();
 		
-		for (int i = 1; i < n; i++) {
+		for (int i = 0; i < n; i++) {
 			String[] priorityString = priorityFileLines[i].split(",");
 			String itemName = priorityString[0];
 			System.out.println(itemName);
@@ -61,8 +86,20 @@ public class Test {
 		System.out.println(priorityList.remove().getName());
 		System.out.println(priorityList.remove().getName());
 		
-		
-			
+		Scanner keyboard = new Scanner(System.in);
+        System.out.print("Please enter a budget : ");
+        String input = keyboard.nextLine();
+        keyboard.close();
+        int budget = Integer.parseInt(input);
+        
+		for (int i = 0; i < priorityList.getSize(); i++);
+		{
+			double itemPrice = priorityList.remove().getPrice();
+			if (budget - itemPrice > 0) 
+			{
+				
+			}
+		}
 	}
 
 	private static String readLineByLine(String filePath)
@@ -77,6 +114,7 @@ public class Test {
 	        e.printStackTrace();
 	    }
 	    return contentBuilder.toString();
+	    
 	}
 }
 
