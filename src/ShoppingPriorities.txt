@@ -1,3 +1,3 @@
 Karpuz,10
+Muz,3
 Elma,3
-Muz,7
