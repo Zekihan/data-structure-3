@@ -41,7 +41,7 @@ public interface ListInterface<T> {
 	 */
 	public T replace(int givenPosition, T newEntry);
 	/**
-	 * Gets en entry without removing from desired position
+	 * Gets an entry without removing from desired position
 	 * @param givenPosition takes a desired position
 	 * @return entry at desired position
 	 */

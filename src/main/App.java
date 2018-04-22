@@ -11,8 +11,8 @@ import java.util.stream.Stream;
 
 public class App {
 
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) 
+	{
 		String ItemFile = readLineByLine("src/ShoppingList.txt");
 		String[] itemFileLines = ItemFile.split("\n");
 		
@@ -107,9 +107,8 @@ public class App {
 
 	}
 
-	
 	private static String readLineByLine(String filePath)
-	{
+	{	
 	    StringBuilder contentBuilder = new StringBuilder();
 	    try (Stream<String> stream = Files.lines( Paths.get(filePath), StandardCharsets.UTF_8))
 	    {

@@ -11,6 +11,48 @@ public class LinkedPQ<T> implements PriorityQueueInterface<T> {
 		headNode = insert(node, newEntry, priority);
 	}
 	
+	public T remove() {
+		
+		if(null == headNode) 
+		{
+			return null;
+	    }
+        T data = headNode.data;
+        headNode = headNode.next;
+        size--;
+        return data;
+	    }
+
+	
+	public T peek() {
+		
+		if(null == headNode) 
+			return null;
+		
+		T data = headNode.data;
+		return data;
+	}
+
+	
+	public boolean isEmpty() {
+		
+		if (headNode != null)
+			return false;
+		
+		else
+			return true;
+	}
+	
+	public int getSize() {
+		return size;
+	}
+
+	
+	public void clear() {
+		headNode = null;
+		
+	}
+	
 	private Node<T> insert(Node<T> node, T data, int priority) {
 		
 		Node<T> newNode =  createNewNode(data,priority);
@@ -38,50 +80,6 @@ public class LinkedPQ<T> implements PriorityQueueInterface<T> {
 		size++;
 		return new Node<T>(data, priority);
 		}
-		
-
-	public T remove() {
-		
-		if(null == headNode) 
-		{
-			return null;
-	    }
-        T data = headNode.data;
-        headNode = headNode.next;
-        size--;
-        return data;
-	    }
-
-	
-	public T peek() {
-		
-		if(null == headNode) 
-		{
-			return null;
-		}
-		
-		T data = headNode.data;
-		return data;
-	}
-
-	
-	public boolean isEmpty() {
-		
-		if (headNode != null & size == 0)
-			return false;
-		else
-			return true;
-	}
-	
-	public int getSize() {
-		return size;
-	}
-
-	
-	public void clear() {
-		headNode = null;
-		
-	}
 	
 	private static class Node<T>
 	{

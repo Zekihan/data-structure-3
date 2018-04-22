@@ -1,11 +1,13 @@
 package main;
 
-public class DLList<T> implements ListInterface<T>{
+public class DLList<T> implements ListInterface<T> {
 	
 	private DLNode firstNode;
 	private DLNode lastNode;
 	private int size; 
-	private class DLNode {
+	
+	private class DLNode 
+	{
 		private T data;
 		private DLNode next;
 		private DLNode prev;
@@ -44,7 +46,6 @@ public class DLList<T> implements ListInterface<T>{
         	prev = prevNode;
         }
         
-        
 	}
 	
 	public DLList() {
@@ -59,19 +60,23 @@ public class DLList<T> implements ListInterface<T>{
 		size = 0;
 	}
 	private DLNode getNodeAt(int givenPosition) throws IllegalArgumentException{
-		if (!(0<=givenPosition && givenPosition<size()+1)) {
+		if (!(0<=givenPosition && givenPosition<size()+1)) 
+		{
 			throw new IllegalArgumentException("Index out Of Bonds");
 		}
 		else {
 			DLNode newNode = firstNode;
-		    if (givenPosition < size / 2) {
+		    if (givenPosition < size / 2) 
+		    {
 		    	newNode = firstNode;
-		      for (int i = 1; i < givenPosition; i++) {
+		      for (int i = 1; i < givenPosition; i++) 
+		      {
 		    	  newNode = newNode.next;
 		      }
 		    } else {
 		      newNode = lastNode;
-		      for (int i = size; i > givenPosition; i--) {
+		      for (int i = size; i > givenPosition; i--) 
+		      {
 		        newNode = newNode.prev;
 		      }
 		    }
@@ -101,20 +106,25 @@ public class DLList<T> implements ListInterface<T>{
 		size++;
 	}
 	public void add(T newEntry,int newPosition) throws IllegalArgumentException{
-		if (!(0<=newPosition && newPosition<size()+1)) {
+		if (!(0<=newPosition && newPosition<size()+1)) 
+		{
 			throw new IllegalArgumentException("Index out Of Bonds");
 		}
-		else{
-			if(newPosition == 1) {
+		else
+		{
+			if(newPosition == 1) 
+			{
 			DLNode newNode = new DLNode(newEntry, firstNode);
 			newNode.next = firstNode;
             newNode.prev = null;
             firstNode = newNode;
-		}
-		else if (newPosition == size) {
+			}
+		else if (newPosition == size) 
+		{
 			add(newEntry);
 		}
-		else {
+		else 
+		{
 			
 			DLNode afterNode = getNodeAt(newPosition);
 			DLNode previousNode = afterNode.getPrevNode();
@@ -138,10 +148,12 @@ public class DLList<T> implements ListInterface<T>{
 		return result;
 	}
 	public T remove(int givenPosition) throws IllegalArgumentException{
-		if (!(0<=givenPosition && givenPosition<size()+1)) {
+		if (!(0<=givenPosition && givenPosition<size()+1)) 
+		{
 			throw new IllegalArgumentException("Index out Of Bonds");
 		}
-		else {
+		else 
+		{
 		T result = null;
 		if (givenPosition == 1) {
 			result = firstNode.getData();
@@ -149,13 +161,15 @@ public class DLList<T> implements ListInterface<T>{
 			
        
 		}
-		else if (givenPosition == size) {
+		else if (givenPosition == size) 
+		{
 			result = lastNode.getData();
 			lastNode = lastNode.getPrevNode();
 			lastNode.setNextNode(null);
 	        
 		}
-		else {
+		else 
+		{
 			DLNode nodeToRemove = getNodeAt(givenPosition);
 			nodeToRemove.prev.next = nodeToRemove.next;
 			nodeToRemove.next.prev = nodeToRemove.prev;
@@ -166,7 +180,8 @@ public class DLList<T> implements ListInterface<T>{
 	}
 	
 	public T replace(int givenPosition, T newEntry) throws IllegalArgumentException{
-		if (!(0<=givenPosition && givenPosition<size()+1)) {
+		if (!(0<=givenPosition && givenPosition<size()+1)) 
+		{
 			throw new IllegalArgumentException("Index out Of Bonds");
 		}
 		else{
@@ -178,7 +193,8 @@ public class DLList<T> implements ListInterface<T>{
 	}
 	}
 	public T getEntry(int givenPosition) throws IllegalArgumentException{
-		if (!(0<=givenPosition && givenPosition<size()+1)) {
+		if (!(0<=givenPosition && givenPosition<size()+1)) 
+		{
 			throw new IllegalArgumentException("Index out Of Bonds");
 		}
 		else{
