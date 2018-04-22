@@ -67,7 +67,7 @@ public class LinkedPQ<T> implements PriorityQueueInterface<T> {
 	
 	public boolean isEmpty() {
 		
-		if (headNode != null)
+		if (headNode != null & size == 0)
 			return false;
 		else
 			return true;
