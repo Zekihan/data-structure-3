@@ -43,9 +43,9 @@ public class App {
 			{
 				priority = Integer.parseInt(priorityString[1]);
 			}
-			else if (priorityString.length == 1)
+			else if (priorityString.length == 0)
 			{
-				priority = 0;
+				priority = 1;
 			}
 			else
 			{
