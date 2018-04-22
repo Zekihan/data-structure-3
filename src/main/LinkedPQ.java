@@ -23,7 +23,7 @@ public class LinkedPQ<T> implements PriorityQueueInterface<T> {
 		{
 			newNode.next = node;
 			node = newNode;
-	    } 
+	    }
 		else 
 	    {
 			node.next = insert(node.next, data, priority);

@@ -89,33 +89,6 @@ public class App {
 	}
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	private static String readLineByLine(String filePath)
 	{
 	    StringBuilder contentBuilder = new StringBuilder();
