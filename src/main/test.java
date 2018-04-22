@@ -8,28 +8,13 @@ import java.util.Scanner;
 import java.util.stream.Stream;
 
 
-public class Test {
+public class test {
 
 	public static void main(String[] args) {
 		
        
-        ListInterface<Item> ittemList = new DLList<Item>();
-		Item Item1 = new Item("Elma", 1);
-		Item Item2 = new Item("Muz", 2);
-		Item Item3 = new Item("Fish", 8);
-		Item Item4 = new Item("Fh", 8);
-		ittemList.add(Item1);
-		ittemList.add(Item2);
-		ittemList.add(Item3);
-		ittemList.add(Item4);
 		
-//		System.out.println(ittemList.getEntry(0).getName());
-		System.out.println(ittemList.getEntry(1).getName());
-		System.out.println(ittemList.getEntry(2).getName());
-		System.out.println(ittemList.getEntry(3).getName());
-		System.out.println(ittemList.getEntry(4).getName());
-		
-/*
+
 		String ItemFile = readLineByLine("src/ShoppingList.txt");
 		String[] itemFileLines = ItemFile.split("\n");
 		
@@ -40,9 +25,11 @@ public class Test {
 			String[] itemString = itemFileLines[i].split(",");
 			itemList.add(new Item(itemString[0],Double.parseDouble(itemString[1]))); 
 		}
-		
+		System.out.println(itemList.getEntry(1).getName());
+		System.out.println(itemList.getEntry(2).getName());
+		System.out.println(itemList.getEntry(3).getName());
+		System.out.println(" ");
 		ListSorter.sort(itemList);
-		System.out.println(itemList.getEntry(0).getName());
 		System.out.println(itemList.getEntry(1).getName());
 		System.out.println(itemList.getEntry(2).getName());
 		System.out.println(itemList.getEntry(3).getName());
@@ -53,13 +40,13 @@ public class Test {
 		
 		PriorityQueueInterface<Item> priorityList = new LinkedPQ<Item>();
 		
-		for (int i = 1; i < n; i++) {
-			String[] priorityString = priorityFileLines[i].split(",");
+		for (int i = 1; i < n+1; i++) {
+			String[] priorityString = priorityFileLines[i-1].split(",");
 			String itemName = priorityString[0];
 			System.out.println(itemName);
 			int priority = Integer.parseInt(priorityString[1]);
 			System.out.println(priority);
-			for (int j = 0; j<ItemNum; j++ ) {
+			for (int j = 1; j<ItemNum+1; j++ ) {
 				if (itemName.equals(itemList.getEntry(j).getName()))
 				{
 					priorityList.add(itemList.getEntry(j), priority);
@@ -88,7 +75,7 @@ public class Test {
 	        e.printStackTrace();
 	    }
 	    return contentBuilder.toString();
-	*/
+	
 	}
 	
 }
