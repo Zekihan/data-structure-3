@@ -3,7 +3,8 @@ package main;
 public interface PriorityQueueInterface<T>
 {
 	/** Adds a new entry to this priority queue.
-		@param newEntry  An object to be added. */
+		@param newEntry  An object to be added.
+		@param priority integer value that specifies entries priority. (Higher is prior)  */
 	public void add(T newEntry,int priority);
 
 	/** Removes and returns the entry having the highest priority.

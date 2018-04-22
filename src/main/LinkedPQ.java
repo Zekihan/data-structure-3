@@ -11,35 +11,6 @@ public class LinkedPQ<T> implements PriorityQueueInterface<T> {
 		headNode = insert(node, newEntry, priority);
 	}
 	
-	private Node<T> insert(Node<T> node, T data, int priority) {
-		
-		Node<T> newNode =  createNewNode(data,priority);
-		
-		if(node == null) 
-		{
-			return newNode;
-		}
-		if(node.priority < priority) 
-		{
-			newNode.next = node;
-			node = newNode;
-	    } 
-		else 
-	    {
-			node.next = insert(node.next, data, priority);
-			size--;
-	    }
-		
-	    return node;
-	    
-	}
-	
-	private Node<T> createNewNode(T data, int priority) {
-		size++;
-		return new Node<T>(data, priority);
-		}
-		
-
 	public T remove() {
 		
 		if(null == headNode) 
@@ -56,9 +27,7 @@ public class LinkedPQ<T> implements PriorityQueueInterface<T> {
 	public T peek() {
 		
 		if(null == headNode) 
-		{
 			return null;
-		}
 		
 		T data = headNode.data;
 		return data;
@@ -69,6 +38,7 @@ public class LinkedPQ<T> implements PriorityQueueInterface<T> {
 		
 		if (headNode != null)
 			return false;
+		
 		else
 			return true;
 	}
@@ -82,6 +52,34 @@ public class LinkedPQ<T> implements PriorityQueueInterface<T> {
 		headNode = null;
 		
 	}
+	
+	private Node<T> insert(Node<T> node, T data, int priority) {
+		
+		Node<T> newNode =  createNewNode(data,priority);
+		
+		if(node == null) 
+		{
+			return newNode;
+		}
+		if(node.priority < priority) 
+		{
+			newNode.next = node;
+			node = newNode;
+	    }
+		else 
+	    {
+			node.next = insert(node.next, data, priority);
+			size--;
+	    }
+		
+	    return node;
+	    
+	}
+	
+	private Node<T> createNewNode(T data, int priority) {
+		size++;
+		return new Node<T>(data, priority);
+		}
 	
 	private static class Node<T>
 	{

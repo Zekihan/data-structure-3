@@ -1,3 +1,5 @@
-Karpuz,10
-Elma,3
-Muz,7
+bread,6
+apples,4
+eggs,4
+chocolate,2
+milk,2
