@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
@@ -30,7 +32,8 @@ public class App {
 		String[] priorityFileLines = priorityFile.split("\n");
 		int n = priorityFileLines.length;
 		
-		PriorityQueueInterface<Item> shoppingList = new LinkedPQ<Item>();
+		
+		Map<String, Integer> priorityMap = new HashMap<String, Integer>();
 		
 		for (int i = 1; i < n+1; i++) 
 		{
@@ -42,26 +45,42 @@ public class App {
 			if (priorityString.length == 2)
 			{
 				priority = Integer.parseInt(priorityString[1]);
-			}
-			else if (priorityString.length == 0)
-			{
-				priority = 1;
+				
+				if(priority > 10 && 1 > priority)
+				{
+					throw new IllegalArgumentException("Wrong file query");
+				}
+				
 			}
 			else
 			{
 				throw new IllegalArgumentException("Wrong file query");
 			}
 			
-			
-			for (int j = 1; j<ItemNum+1; j++ ) 
-			{
-				if (itemName.equals(itemList.getEntry(j).getName()))
-				{
-					shoppingList.add(itemList.getEntry(j), priority);
-				}
-			}
+			priorityMap.put(itemName, priority);
+		
 		}
 		
+		PriorityQueueInterface<Item> shoppingList = new LinkedPQ<Item>();
+		
+		for (int i = 1; i < itemList.size()+1; i++)
+		{
+			Item item = itemList.getEntry(i);
+			String itemName = item.getName();
+			Integer priority;
+			
+			if (priorityMap.containsKey(itemName))
+			{
+				priority = priorityMap.get(itemName);
+				shoppingList.add(item, priority);
+			}
+			else
+			{
+				priority = 1;
+				shoppingList.add(item, priority);
+			}
+		}
+			
 		Scanner keyboard = new Scanner(System.in);
 	    System.out.print("Please enter a budget : ");
 	    String input = keyboard.nextLine();
