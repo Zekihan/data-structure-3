@@ -63,10 +63,10 @@ public class DLList<T> implements ListInterface<T>{
 			throw new IllegalArgumentException("Index out Of Bonds");
 		}
 		else {
-			DLNode newNode;
+			DLNode newNode = firstNode;
 		    if (givenPosition < size / 2) {
 		    	newNode = firstNode;
-		      for (int i = 0; i < givenPosition+1; i++) {
+		      for (int i = 1; i < givenPosition; i++) {
 		    	  newNode = newNode.next;
 		      }
 		    } else {
@@ -75,9 +75,9 @@ public class DLList<T> implements ListInterface<T>{
 		        newNode = newNode.prev;
 		      }
 		    }
-		    
-		    return newNode;
-		}
+	
+			return newNode;
+			}
 	    
 	}
 	public boolean isEmpty() {
@@ -87,15 +87,17 @@ public class DLList<T> implements ListInterface<T>{
 		return result;
 	}
 	public void add(T newEntry) {
-		DLNode newNode = new DLNode(lastNode, newEntry);
-		if (isEmpty()) {
-			firstNode = newNode;
-			lastNode = newNode;
-		}
-		else {
-			lastNode.setNextNode(newNode);
-			lastNode = newNode;
-		}
+		DLNode newNode = new DLNode(newEntry);
+	      if( isEmpty() )               
+	    	  firstNode = newNode;            
+	      else
+	         {
+	    	  DLNode lastNode2 = lastNode;
+	    	  lastNode.next = newNode;        
+	    	  newNode.prev = lastNode2;    
+	         }
+	      lastNode = newNode; 
+		
 		size++;
 	}
 	public void add(T newEntry,int newPosition) throws IllegalArgumentException{

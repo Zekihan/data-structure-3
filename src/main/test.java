@@ -11,14 +11,25 @@ import java.util.stream.Stream;
 public class Test {
 
 	public static void main(String[] args) {
-        DLList<String> list = new DLList<String>();
-        
+		
+       
+        ListInterface<Item> ittemList = new DLList<Item>();
 		Item Item1 = new Item("Elma", 1);
 		Item Item2 = new Item("Muz", 2);
 		Item Item3 = new Item("Fish", 8);
+		Item Item4 = new Item("Fh", 8);
+		ittemList.add(Item1);
+		ittemList.add(Item2);
+		ittemList.add(Item3);
+		ittemList.add(Item4);
 		
+//		System.out.println(ittemList.getEntry(0).getName());
+		System.out.println(ittemList.getEntry(1).getName());
+		System.out.println(ittemList.getEntry(2).getName());
+		System.out.println(ittemList.getEntry(3).getName());
+		System.out.println(ittemList.getEntry(4).getName());
 		
-
+/*
 		String ItemFile = readLineByLine("src/ShoppingList.txt");
 		String[] itemFileLines = ItemFile.split("\n");
 		
@@ -77,6 +88,8 @@ public class Test {
 	        e.printStackTrace();
 	    }
 	    return contentBuilder.toString();
+	*/
 	}
+	
 }
 
