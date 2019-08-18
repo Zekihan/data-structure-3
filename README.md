@@ -1,2 +1,3 @@
 # data-structure-3
-Data Homework
+Data Structures Homework 3
+
